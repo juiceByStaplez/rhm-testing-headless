@@ -5,8 +5,14 @@ import { wixClient } from "@/lib/wixClient";
 import ProductList from "@/components/ProductList";
 import { useEffect, useState } from "react";
 
+type ProductCard = {
+  _id: string;
+  name: string | null | undefined;
+  image: string;
+};
+
 export default function Page() {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<ProductCard[]>([]);
   const { updateCartCount } = useCart();
 
   useEffect(() => {
@@ -14,7 +20,7 @@ export default function Page() {
       const res = await wixClient.products.queryProducts().find();
       setProducts(
         res.items.map((item) => ({
-          _id: item._id,
+          _id: item._id!, // <-- tell TypeScript this is definitely a string
           name: item.name,
           image: item.media?.mainMedia?.image?.url || "/placeholder.png",
         }))
