@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  ComposableMap,
-  Geographies,
-  Geography,
-  Geopoint,
-  Projection,
-} from "react-simple-maps";
+import { ComposableMap, Geographies } from "react-simple-maps";
 import { useState } from "react";
 import { geoPath, geoCentroid } from "d3-geo";
 import { motion } from "framer-motion";
@@ -71,7 +65,7 @@ const fipsToAbbr: Record<string, string> = {
 };
 
 export default function USMap({ stateCounts }: Props) {
-  const [hovered, setHovered] = useState<string | null>(null);
+  const [hovered] = useState<string | null>(null);
 
   return (
     <div className="w-full max-w-5xl mx-auto aspect-[960/600]">

@@ -6,6 +6,7 @@ export function wixMediaToUrl(media: string): string {
 
   if (media.startsWith("wix:image://")) {
     const clean = media.replace("wix:image://", "");
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [mediaId, filenameAndQuery] = clean.split("/");
     const filename = filenameAndQuery.split("#")[0]; // strip off poster info
     return `${IMAGE_BASE}/${filename}`;
@@ -13,6 +14,7 @@ export function wixMediaToUrl(media: string): string {
 
   if (media.startsWith("wix:video://")) {
     const clean = media.replace("wix:video://", "");
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [mediaId, filenameAndQuery] = clean.split("/");
     const filename = filenameAndQuery.split("#")[0];
     return `${VIDEO_BASE}/${filename}`;

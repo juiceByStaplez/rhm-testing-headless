@@ -17,10 +17,18 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     try {
       const cart = await wixClient.currentCart.getCurrentCart();
       const count =
-        cart.lineItems?.reduce((sum, item) => sum + item.quantity, 0) || 0;
+        cart.lineItems?.reduce((sum, item) => {
+          if (typeof item.quantity !== "undefined") {
+            sum += item.quantity;
+          }
+          return sum;
+        }, 0) || 0;
       setCartCount(count);
-    } catch (err: any) {
-      if (err?.message?.includes("OWNED_CART_NOT_FOUND")) {
+    } catch (err: unknown) {
+      if (
+        err instanceof Error &&
+        err.message.includes("OWNED_CART_NOT_FOUND")
+      ) {
         setCartCount(0);
       } else {
         console.error("Error updating cart count:", err);
