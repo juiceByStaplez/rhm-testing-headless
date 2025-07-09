@@ -17,12 +17,12 @@ type PageProps = {
 
 export default async function Page({ params }: PageProps) {
   const res = await wixClient.items
-    .query<PortfolioProject>("PortfolioProjects")
+    .query("PortfolioProjects")
     .eq("link-portfolio-projects-1-companyTitle", `/portfolio/${params.slug}`)
     .limit(1)
     .find();
 
-  const project = res.items[0];
+  const project = res.items[0] as unknown as PortfolioProject;
 
   return <PortfolioProjectView project={project} />;
 }

@@ -19,11 +19,11 @@ function extractStateAbbr(location: string): string | null {
 
 export default async function Page() {
   const res = await wixClient.items
-    .query<PortfolioProject>("PortfolioProjects")
+    .query("PortfolioProjects")
     .limit(100)
     .find();
 
-  const projects = res.items;
+  const projects = res.items as unknown as PortfolioProject[];
 
   const projectCountsByState: StateCount = countProjectsByState(projects);
 
