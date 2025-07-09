@@ -6,12 +6,12 @@ type PageProps = {
   params: {
     slug: string;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    then?: any;
+    then: any;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    catch?: any;
+    catch: any;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    finally?: any;
-    [Symbol.toStringTag]?: string;
+    finally: any;
+    [Symbol.toStringTag]: string;
   };
 };
 
