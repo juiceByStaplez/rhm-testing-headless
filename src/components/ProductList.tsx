@@ -31,7 +31,7 @@ export default function ProductList({
           </div>
           <div className="p-4">
             <button
-              onClick={() => onAddToCart(product._id)}
+              onClick={() => onAddToCart(product._id as string)}
               className="w-full rounded bg-indigo-600 px-4 py-2 text-sm text-white hover:bg-indigo-700 transition"
             >
               Add to Cart

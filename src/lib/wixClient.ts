@@ -9,5 +9,5 @@ export const wixClient = createClient({
     currentCart,
     items,
   },
-  auth: OAuthStrategy({ clientId: process.env.NEXT_PUBLIC_WIX_CLIENT_ID }),
+  auth: OAuthStrategy({ clientId: process.env.NEXT_PUBLIC_WIX_CLIENT_ID! }),
 });
