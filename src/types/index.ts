@@ -19,3 +19,9 @@ export interface PortfolioProject {
 }
 
 export type StateCount = Record<string, number>;
+
+export type Product = {
+  name?: string;
+  image?: string;
+  _id?: string;
+};

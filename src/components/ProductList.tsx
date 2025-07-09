@@ -1,8 +1,4 @@
-type Product = {
-  name: string;
-  image: string;
-  _id: string;
-};
+import { Product } from "@/types";
 
 type ProductListProps = {
   products: Product[];

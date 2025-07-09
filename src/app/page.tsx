@@ -1,18 +1,12 @@
 "use client";
-
+import { Product } from "@/types";
 import { useCart } from "@/context/CartContext";
 import { wixClient } from "@/lib/wixClient";
 import ProductList from "@/components/ProductList";
 import { useEffect, useState } from "react";
 
-type ProductCard = {
-  _id: string;
-  name: string | null | undefined;
-  image: string;
-};
-
 export default function Page() {
-  const [products, setProducts] = useState<ProductCard[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const { updateCartCount } = useCart();
 
   useEffect(() => {
@@ -21,7 +15,7 @@ export default function Page() {
       setProducts(
         res.items.map((item) => ({
           _id: item._id!, // <-- tell TypeScript this is definitely a string
-          name: item.name,
+          name: item.name!,
           image: item.media?.mainMedia?.image?.url || "/placeholder.png",
         }))
       );
